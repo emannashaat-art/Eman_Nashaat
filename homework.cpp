@@ -8,14 +8,13 @@
 
 // class Stack {
 // private:
-//     node* top;   // بداية الستاك (أعلى عنصر)
+//     node* top;  
 
 // public:
 //     Stack() {
 //         top = NULL;
 //     }
 
-//     // push: إدخال عنصر فوق الستاك
 //     void push(int value) {
 //         node* newnode = new node;
 //         newnode->data = value;
@@ -23,7 +22,6 @@
 //         top = newnode;
 //     }
 
-//     // pop: حذف وإرجاع أعلى عنصر
 //     int pop() {
 //         if (top == NULL) {
 //             cout << "Stack is empty!\n";
@@ -37,7 +35,6 @@
 //         return val;
 //     }
 
-//     // peek: رؤية أعلى عنصر بدون حذفه
 //     int peek() {
 //         if (top == NULL) {
 //             cout << "Stack is empty!\n";
@@ -64,7 +61,6 @@
 //         frontPtr = rearPtr = NULL;
 //     }
 
-//     // enqueue: إدخال عنصر في آخر الطابور
 //     void enqueue(int value) {
 //         node* newnode = new node;
 //         newnode->data = value;
@@ -79,7 +75,6 @@
 //         rearPtr = newnode;
 //     }
 
-//     // dequeue: حذف أول عنصر
 //     int dequeue() {
 //         if (frontPtr == NULL) {
 //             cout << "Queue is empty!\n";
@@ -98,7 +93,6 @@
 //         return val;
 //     }
 
-//     // front: رؤية أول عنصر بدون حذفه
 //     int front() {
 //         if (frontPtr == NULL) {
 //             cout << "Queue is empty!\n";

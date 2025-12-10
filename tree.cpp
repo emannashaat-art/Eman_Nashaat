@@ -55,7 +55,58 @@ void Inorder(Node* r)
    cout << r-> data <<"\t";
    Inorder(r->right);
 }
+void Postorder(Node* r) 
+{
+    if (r == NULL)
+        return;
 
+    Postorder(r->left);
+    Postorder(r->right);
+    cout << r->data << "\t";
+}
+
+Node* Search(Node* r, int key)
+{
+    if (r == NULL)
+        return NULL;
+
+    else if (r->data == key)
+        return r;
+
+    else if (key < r->data)
+        return Search(r->left, key);
+
+    else
+        return Search(r->right, key);
+}
+// bool Search(int key){
+//   Node* result = Search(root , key);
+//   if (result == NULL){
+//     return NULL ; 
+
+
+//   }
+// }
+Node* Findmin(Node* r )
+{
+  if(r == NULL) 
+    return NULL;
+  else if(r -> left == NULL)
+     return r; 
+  else
+  return Findmin(r -> left);
+
+}
+Node* Findmax(Node* r )
+{
+  if(r == NULL) 
+    return NULL;
+  else if(r -> right == NULL)
+     return r; 
+  else
+     return Findmax(r -> right);
+
+}
 
 
 };

@@ -1,4 +1,88 @@
 
+// Nikita and Stack
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     int m;
+//     cin >> m;
+
+//     int type=100005;
+//     int value=100005;
+//     int order=100005;
+//     int st=100005;
+//     int top = -1;   
+
+//     for (int i = 1; i <= m; i++) {
+//         int p, t;
+//         cin >> p >> t;
+//         type[p] = t;
+//         if (t == 1)
+//             cin >> value[p];
+//         order[i] = p;
+//     }
+
+//     for (int i = 1; i <= m; i++) {
+//         int idx = order[i];
+
+//         if (type[idx] == 1) {
+           
+//             top++;
+//             st[top] = value[idx];
+//         } else {
+        
+//             if (top >= 0)
+//                 top--;
+//         }
+
+//         if (top == -1)
+//             cout << -1 << " ";
+//         else
+//             cout << st[top] << " ";
+//     }
+
+//     return 0;
+// }
+
+
+
+
+// Beautiful Average
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     int n;
+//     cin >> n;
+
+//     int arr[1000];
+//     int sum = 0;
+
+//     for (int i = 0; i < n; i++) {
+//         cin >> arr[i];
+//         sum += arr[i];
+//     }
+
+//     bool found = false;
+//     for (int i = 0; i < n; i++) {
+//         int restSum = sum - arr[i];
+//         double avg = (double)restSum / (n - 1);
+
+//         if (avg == arr[i]) {
+//             found = true;
+//             break;
+//         }
+//     }
+
+//     if (found)
+//         cout << "YES";
+//     else
+//         cout << "NO";
+
+//     return 0;
+// }
+
+
 // Count Distinct
 // #include <iostream>
 // using namespace std;
@@ -18,7 +102,7 @@
 //         bool isNew = true;
 //         for (int j = 0; j < i; j++) {
 //             if (arr[i] == arr[j]) {
-//                 isNew = false;.
+//                 isNew = false;
 //                 break;
 //             }
 //         }
@@ -395,128 +479,5 @@
 //     }
 //     return 0;
 // }
-
-// Nikita and Stack
-// #include <iostream>
-// using namespace std;
-
-// int main() {
-//     int m;
-//     cin >> m;
-
-//     int type=100005;
-//     int value=100005;
-//     int order=100005;
-//     int st=100005;
-//     int top = -1;   
-
-//     for (int i = 1; i <= m; i++) {
-//         int p, t;
-//         cin >> p >> t;
-//         type[p] = t;
-//         if (t == 1)
-//             cin >> value[p];
-//         order[i] = p;
-//     }
-
-//     for (int i = 1; i <= m; i++) {
-//         int idx = order[i];
-
-//         if (type[idx] == 1) {
-           
-//             top++;
-//             st[top] = value[idx];
-//         } else {
-        
-//             if (top >= 0)
-//                 top--;
-//         }
-
-//         if (top == -1)
-//             cout << -1 << " ";
-//         else
-//             cout << st[top] << " ";
-//     }
-
-//     return 0;
-// }
-
-
-// Beautiful Average
-// #include <iostream>
-// using namespace std;
-
-// int main() {
-//     int n;
-//     cin >> n;
-
-//     int arr[1000];
-//     int sum = 0;
-
-//     for (int i = 0; i < n; i++) {
-//         cin >> arr[i];
-//         sum += arr[i];
-//     }
-
-//     bool found = false;
-//     for (int i = 0; i < n; i++) {
-//         int restSum = sum - arr[i];
-//         double avg = (double)restSum / (n - 1);
-
-//         if (avg == arr[i]) {
-//             found = true;
-//             break;
-//         }
-//     }
-
-//     if (found)
-//         cout << "YES";
-//     else
-//         cout << "NO";
-
-//     return 0;
-// }
-
-
-
-
-// Question Marks
-// #include <iostream>
-// using namespace std;
-
-// int main() {
-//     int t;
-//     cin >> t;
-
-//     while (t--) {
-//         int n;
-//         cin >> n;
-
-//         string s;
-//         cin >> s;
-
-//         int cntA = 0, cntB = 0, cntC = 0, cntD = 0;
-
-//         for (char c : s) {
-//             if (c == 'A') cntA++;
-//             else if (c == 'B') cntB++;
-//             else if (c == 'C') cntC++;
-//             else if (c == 'D') cntD++;
-//         }
-
-//         int result = 0;
-//         result += min(cntA, n);
-//         result += min(cntB, n);
-//         result += min(cntC, n);
-//         result += min(cntD, n);
-
-//         cout << result << "\n";
-//     }
-
-//     return 0;
-// }
-
-
-
 
 

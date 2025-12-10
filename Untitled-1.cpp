@@ -1,137 +1,138 @@
 
-// #include <iostream>
-// using namespace std;
-// #define size 10;
-// int stack { 
-// int top = -1;
-// }
-// class stack{
-// int arr[size] ; 
+#include <iostream>
+#include <string>
+using namespace std;
 
-//  int push(int x ){
-//  if top >= size-1;
-// //  return -1 ;
-// cout <<"fulllll";
-//  }
-//  else{
-//   ++top;
-//   arr [++top] =x ;
-//   // return arr[top];
-//  }
-
-// int pop (){
-//  if(top < o){ //هنا بشوف هو فاضي ولا لا 
-//     cout<<"stack is empty";
-// }
-// else{
-//   cout<< arr[top --]; // عشان ياخد قيمه التوب ويقللها 
-// }
-// }
-// int print_topvalue(){
-//     return arr[top];  
-// }
+const int SIZE = 100;
 
 
+int numStack[SIZE];
+int numTop = -1;
 
-//  }
-// class queue{
+bool numEmpty() {
+    return numTop == -1;
+}
 
+bool numFull() {
+    return numTop == SIZE - 1;
+}
 
+void numPush(int x) {
+    if (!numFull()) {
+        numTop++;
+        numStack[numTop] = x;
+    }
+}
 
-//   }
+int numPop() {
+    if (!numEmpty()) {
+        int v = numStack[numTop];
+        numTop--;
+        return v;
+    }
+    return -1;
+}
 
-// int main(){
-// stack s1 ;
-// s1.push{5} ; 
-// s1.push{1} ; 
-// s1.push{3} ; 
-// s1.push{4} ; 
-// s1.push{6} ; 
+char opStack[SIZE];
+int opTop = -1;
 
-// si.top{};
+bool opEmpty() {
+    return opTop == -1;
+}
 
-// return 0;
-// }
-  
-// class queue{
-//   int a[6] ;
-//    int rear;
-//    int front;
-//   int enqueue {int x}{
-//    front =-1;
-//    rear = 0; 
-//   }
-//   int dequeue
-// }
+void opPush(char c) {
+    opTop++;
+    opStack[opTop] = c;
+}
 
+char opPop() {
+    char c = opStack[opTop];
+    opTop--;
+    return c;
+}
+char opPeek() {
+    return opStack[opTop];
+}
 
-// tring infixToPostfix(string in) {
-//     string post = "";
+int prec(char c) {
+    if (c == '*' || c == '/') return 2;
+    if (c == '+' || c == '-') return 1;
+    return 0;
+}
 
-//     for (int i = 0; i < in.size(); i++) {
-//         char c = in[i];
+string infixToPostfix(string s) {
+    string post = "";
+    for (int i = 0; i < s.size(); i++) {
+        char c = s[i];
+        if (isdigit(c)) {
+            post += c;
+            post += ' ';
+        }
+        else if (c == '(') {
+            opPush(c);
+        }
 
-//         if (isdigit(c)) {
-//             post += c;
-//             post += ' ';
-//         }
-//         else if (c == '(') {
-//             pushOp(c);
-//         }
-//         else if (c == ')') {
-//             while (!isEmptyOp() && peekOp() != '(') {
-//                 post += popOp();
-//                 post += ' ';
-//             }
-//             if (!isEmptyOp()) popOp();
-//         }
-//         else if (isOp(c)) {
-//             while (!isEmptyOp() && prec(peekOp()) >= prec(c)) {
-//                 post += popOp();
-//                 post += ' ';
-//             }
-//             pushOp(c);
-//         }
-//     }
+        else if (c == ')') {
+            while (!opEmpty() && opPeek() != '(') {
+                post += opPop();
+                post += ' ';
+            }
+            opPop(); 
+        }
+        else {  
+            while (!opEmpty() && prec(opPeek()) >= prec(c)) {
+                post += opPop();
+                post += ' ';
+            }
+            opPush(c);
+        }
+    }
+    while (!opEmpty()) {
+        post += opPop();
+        post += ' ';
+    }
 
-//     while (!isEmptyOp()) {
-//         post += popOp();
-//         post += ' ';
-//     }
+    return post;
+}
 
-//     return post;
-// }
+int evaluatePostfix(string p) {
+    for (int i = 0; i < p.size(); i++) {
+        char c = p[i];
 
-// int evaluatePostfix(string p) {
-//     for (int i = 0; i < p.size(); i++) {
-//         char c = p[i];
+        if (isdigit(c)) {
+            numPush(c - '0');
+        }
+        else if (c == '+' || c == '-' || c == '*' || c == '/') {
+            int b = numPop();
+            int a = numPop();
 
-//         if (isdigit(c)) {
-//             pushNum(c - '0');
-//         }
-//         else if (isOp(c)) {
-//             int b = popNum();
-//             int a = popNum();
+            int r = 0;
 
-//             int r = 0;
-//             if (c == '+') r = a + b;
-//             else if (c == '-') r = a - b;
-//             else if (c == '*') r = a * b;
-//             else if (c == '/') r = a / b;
+            if (c == '+') r = a + b;
+            else if (c == '-') r = a - b;
+            else if (c == '*') r = a * b;
+            else if (c == '/') r = a / b;
 
-//             pushNum(r);
-//         }
-//     }
-//     return popNum();
-// }
+            numPush(r);
+        }
+    }
 
-// int main() {
-//     string infix;
-//     cout << "Enter infix: ";
-//     cin >> infix;
+    return numPop();
+}
 
-//     string post = infixToPostfix(infix);
-//     cout << "Postfix = " << post << endl;
+int main() {
+    string infix;
 
-//     int result = evaluatePostfix(post);
-//     cout << "Result = " << result << endl;
+    cout << "Enter infix: ";
+    cin >> infix;
+
+    string post = infixToPostfix(infix);
+
+    cout << "Postfix: " << post << endl;
+
+    int ans = evaluatePostfix(post);
+
+    cout << "Result = " << ans << endl;
+
+    return 0;
+}
